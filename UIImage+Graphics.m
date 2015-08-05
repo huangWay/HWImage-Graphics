@@ -2,8 +2,8 @@
 //  UIImage+Graphics.m
 //  抽取
 //
-//  Created by 黄伟 on 15/6/17.
-//  Copyright (c) 2015年 huangwei. All rights reserved.
+//  Created by 黄伟 on 14/6/17.
+//  Copyright (c) 2014年 huangwei. All rights reserved.
 //
 
 #import "UIImage+Graphics.h"
@@ -26,6 +26,7 @@
     UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
     //关闭图形上下文
     UIGraphicsEndImageContext();
+  
     return result;
 }
 +(UIImage *)imageCutInToCircle:(NSString *)imageName withBorderWidth:(CGFloat)borderWidth color:(UIColor *)color{
@@ -59,6 +60,7 @@
     UIGraphicsEndImageContext();
     return result;
 }
+
 +(UIImage *)image:(NSString *)imageName addLOGO:(NSString *)logoName{
     //水印图片距离背景图片右下角x,y均＝10，根据需要自行更改
     CGFloat margin = 10;
@@ -82,6 +84,7 @@
     UIGraphicsEndImageContext();
     return result;
 }
+
 +(UIImage *)image:(NSString *)imageName addText:(NSString *)text attributes:(NSDictionary *)attributes{
     //要处理的图片
     UIImage *image = [UIImage imageNamed:imageName];
@@ -99,6 +102,7 @@
     UIGraphicsEndImageContext();
     return result;
 }
+
 +(UIImage *)captureImageFromLayer:(CALayer *)layer{
     //开启图形上下文，尺寸以要截的图层为准
     UIGraphicsBeginImageContextWithOptions(layer.bounds.size, 0, 0.0);
@@ -111,5 +115,11 @@
     //关闭图形上下文
     UIGraphicsEndImageContext();
     return result;
+}
+
+//从中间裁剪一张图片
++(instancetype)resizeImageWithImageName:(NSString *)name{
+    UIImage *image = [UIImage imageNamed:name];
+    return [image stretchableImageWithLeftCapWidth:image.size.width*0.5 topCapHeight:image.size.height*0.5];
 }
 @end

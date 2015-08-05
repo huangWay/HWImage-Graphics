@@ -2,8 +2,8 @@
 //  UIImage+Graphics.h
 //  抽取
 //
-//  Created by 黄伟 on 15/6/17.
-//  Copyright (c) 2015年 huangwei. All rights reserved.
+//  Created by 黄伟 on 14/6/17.
+//  Copyright (c) 2014年 huangwei. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -34,4 +34,9 @@
  *  截屏
  */
 +(UIImage *)captureImageFromLayer:(CALayer *)layer;
+
+/**
+ * 从中间裁剪一张图片
+ */
++(instancetype)resizeImageWithImageName:(NSString *)name;
 @end
